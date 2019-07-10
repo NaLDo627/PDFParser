@@ -15,7 +15,7 @@ PDF파일을 일일이 복붙하여 문서화 시키는 작업이 번거러워�
 혹은 필요로 하는 패키지를 수동으로 설치해 주셔도 됩니다.
 
 #### 사용법
-`python -o {outputPath} -j {jsonPath} -p {pdfPath}`
+`python PdfParser.py -o {outputPath} -j {jsonPath} -p {pdfPath}`
 
 {outputPath} : 추출된 텍스트가 쓰여질 경로입니다.<br>
 {jsonPath} : 교과목 인덱스가 담길 json파일 경로입니다.<br> 
@@ -30,3 +30,5 @@ Key값은 텍스트파일에서 사용될 목차명, Value값은 페이지를 �
     "1_1_2": "18-19,21,23-24"
 }
 ```
+
+참고용 JSON 파일 : <https://github.com/NaLDo627/PDFParser/blob/master/Source/WorldHistoryIndex.json>
