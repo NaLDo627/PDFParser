@@ -7,6 +7,7 @@ from pdfminer.layout import LAParams
 from io import StringIO
 from mypdfpage import MyPdfPage
 import sys
+import re
 
 
 # 각 목차 안의 페이지를 리스트화 함
@@ -69,12 +70,11 @@ def purify_text(extracted_text, pageno, index_dic):
 
         if trimed_line[-2:] == "다." or trimed_line[-2:] == "까?":
             purified_text += trimed_line + "|" + str(pageno) + "|" + get_page_tag(pageno, index_dic) + "\n\n"
-        elif line[-1] == ' ':
-            purified_text += line
-        elif line[-1] != ' ' and trimed_line[-2:] != "다." and trimed_line[-2:] != "까?":
-            purified_text += line + ' '
         else:
-            purified_text += "\n"
+            purified_text += trimed_line + ' '
+
+    # 이중 공백을 제거한다.
+    purified_text = re.sub(' +', ' ', purified_text)
 
     purified_text += "\n\n"
     return purified_text
@@ -107,6 +107,7 @@ def convert_pdf_to_txt(path, index_dic, maxpages=0, pagenos=None, password="", c
             retstr.close()
 
         fp.close()
+
         return ret_text
     except FileNotFoundError:
         sys.stderr.write("No file: %s\n" % path)
