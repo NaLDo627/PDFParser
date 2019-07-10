@@ -30,3 +30,5 @@ Key값은 텍스트파일에서 사용될 목차명, Value값은 페이지를 �
     "1_1_2": "18-19,21,23-24"
 }
 ```
+
+참고용 JSON 파일 : <https://github.com/NaLDo627/PDFParser/blob/master/Source/WorldHistoryIndex.json>
